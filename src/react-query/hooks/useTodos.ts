@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import APIClient from "../services/apiClient";
 import { CACHE_KEY_TODOS } from "../constants";
 
 export interface Todo {
@@ -10,14 +10,13 @@ export interface Todo {
   }
 
 const useTodos = () => {
-    const fetchTodos = () =>
-    axios
-      .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
-      .then((res) => res.data);
+  const apiClient = new APIClient<Todo>("/todos");
 
     return useQuery<Todo[], Error>({
         queryKey: CACHE_KEY_TODOS,
-        queryFn: fetchTodos,
+        //queryFn: apiClient.getAll,  // this keyword looses context and becomes undefined (it "can't" be part of an object, must be standalone function)
+        //queryFn: apiClient.getAll.bind(apiClient), // works but kinda ugly
+        queryFn: apiClient.getAll,
         staleTime: 10 * 1000 //10 seconds
       });
 }
