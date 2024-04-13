@@ -1,5 +1,5 @@
 import React, { Dispatch } from "react";
-import { AuthAction } from "../reducers/authReducer";
+import { AuthAction } from "./AuthProvider";
 
 interface AuthContextType {
     user: string; //User object in real world with fields like id, name ETC
