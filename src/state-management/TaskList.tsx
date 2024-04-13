@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import TasksContext from "./context/tasksContext";
+import AuthContext from "./context/userContext";
 
 const TaskList = () => {
   const { tasks, dispatch } = useContext(TasksContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>
+      <p>User: {user}</p>
       <button
         onClick={() =>
           dispatch({
