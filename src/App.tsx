@@ -1,14 +1,16 @@
 import "./App.css";
-import PostList from "./react-query/PostList";
-import TodoForm from "./react-query/TodoForm";
-import TodoList from "./react-query/TodoList";
+import Counter from "./state-management/counter/Counter";
+import HomePage from "./state-management/HomePage";
+import NavBar from "./state-management/NavBar";
+import { TasksProvider } from "./state-management/tasks";
 
 function App() {
   return (
-    <>
-      <TodoForm></TodoForm>
-      <TodoList></TodoList>
-    </>
+    <TasksProvider>
+      <Counter></Counter>
+      <NavBar></NavBar>
+      <HomePage></HomePage>
+    </TasksProvider>
   );
 }
 
