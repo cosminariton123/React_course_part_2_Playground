@@ -6,6 +6,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./App";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./routing/routes";
 
 //global options if needed
 const queryClient = new QueryClient();
@@ -26,7 +28,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RouterProvider router={router}></RouterProvider>
       <ReactQueryDevtools></ReactQueryDevtools>
     </QueryClientProvider>
   </React.StrictMode>
