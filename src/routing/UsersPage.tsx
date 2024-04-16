@@ -1,11 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import UserList from "./UserList";
-import useAuth from "./hooks/useAuth";
 
-const MasterDetailPage = () => {
-  const { user } = useAuth();
-  if (!user) return <Navigate to="/login"></Navigate>;
-
+const UserPage = () => {
   return (
     <div className="row">
       <div className="col">
@@ -18,4 +14,4 @@ const MasterDetailPage = () => {
   );
 };
 
-export default MasterDetailPage;
+export default UserPage;
